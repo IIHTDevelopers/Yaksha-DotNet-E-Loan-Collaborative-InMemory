@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace E_Loan.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
     {

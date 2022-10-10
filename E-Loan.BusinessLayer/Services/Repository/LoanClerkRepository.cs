@@ -25,15 +25,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<IEnumerable<LoanMaster>> AllLoanApplication()
         {
-            try
-            {
-                return await _eLoanDbContext.loanMasters
-                    .OrderByDescending(x => x.LoanName).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Show/Get all loan application that status is Not Recived
@@ -41,15 +34,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<IEnumerable<LoanMaster>> NotReceivedLoanApplication()
         {
-            try
-            {
-                return await _eLoanDbContext.loanMasters
-                    .Where(x => x.LStatus == LoanStatus.NotReceived).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Start the loan process and add the remening data by loan clerk
@@ -58,20 +44,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<LoanProcesstrans> ProcessLoan(LoanProcesstrans loanProcesstrans)
         {
-            try
-            {
-                if (loanProcesstrans == null)
-                {
-                    throw new ArgumentNullException(typeof(LoanProcesstrans).Name + "Object is Null");
-                }
-                await _eLoanDbContext.loanProcesstrans.AddAsync(loanProcesstrans);
-                await _eLoanDbContext.SaveChangesAsync();
-            }
-            catch(Exception ex)
-            {
-                throw (ex);
-            }
-            return loanProcesstrans;
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Make the loan application as "Recived" before starting loan process using this method
@@ -80,20 +54,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<LoanMaster> ReceivedLoan(int loanId)
         {
-            try
-            {
-                var findLoan = await _eLoanDbContext.loanMasters.FirstOrDefaultAsync(m => m.LoanId == loanId);
-                if (findLoan != null && findLoan.LStatus == LoanStatus.NotReceived)
-                {
-                    findLoan.LStatus = LoanStatus.Received;
-                    await _eLoanDbContext.SaveChangesAsync();
-                }
-                return findLoan;
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Find and get all loan application that is recived for loan clerk
@@ -101,16 +63,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<IEnumerable<LoanMaster>> ReceivedLoanApplication()
         {
-            try
-            {
-                var result = await _eLoanDbContext.loanMasters.
-                Where(x => x.LStatus == LoanStatus.Received).Take(10).ToListAsync();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
+            //do code here
+            throw new NotImplementedException();
         }
     }
 }

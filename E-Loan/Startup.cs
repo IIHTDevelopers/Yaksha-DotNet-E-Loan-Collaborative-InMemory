@@ -25,7 +25,7 @@ namespace E_Loan
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-      
+
             services.AddMvc().AddNewtonsoftJson(options =>
                 {
                     options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
@@ -34,9 +34,9 @@ namespace E_Loan
             services.AddMvc(options => options.EnableEndpointRouting = false).
                 SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-      //To Use InMemory Db
-      services.AddDbContext<ELoanDbContext>(options => options.UseInMemoryDatabase(databaseName: "InmemeoryAppConn"));
-      services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //To Use InMemory Db
+            services.AddDbContext<ELoanDbContext>(options => options.UseInMemoryDatabase(databaseName: "ConnStr"));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ILoanCustomerRepository, LoanCustomerRepository>();
             services.AddScoped<ILoanCustomerServices, LoanCustomerServices>();
             services.AddScoped<ILoanClerkRepository, LoanClerkRepository>();
@@ -55,10 +55,10 @@ namespace E_Loan
             else
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                
+
                 //app.UseHsts();
             }
-         
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

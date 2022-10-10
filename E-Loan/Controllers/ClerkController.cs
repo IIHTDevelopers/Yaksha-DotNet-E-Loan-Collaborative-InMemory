@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace E_Loan.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class ClerkController : ControllerBase
     {
@@ -27,7 +26,8 @@ namespace E_Loan.Controllers
         [HttpGet]
         public async Task<IEnumerable<LoanMaster>> GetAllApplication()
         {
-            return await _clerkServices.AllLoanApplication();
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// See the status of not recived application

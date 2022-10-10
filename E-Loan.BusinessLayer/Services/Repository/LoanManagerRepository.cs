@@ -29,21 +29,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<LoanMaster> AcceptLoanApplication(int loanId, string remark)
         {
-            try
-            {
-                var findLoan = await _eLoanDbContext.loanMasters.FirstOrDefaultAsync(m => m.LoanId == loanId);
-                if (findLoan.LStatus == LoanStatus.Received)
-                {
-                    findLoan.LStatus = LoanStatus.Accept;
-                    findLoan.ManagerRemark = remark;
-                    await _eLoanDbContext.SaveChangesAsync();
-                }
-                return findLoan;
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Get list of all loan Application baed on status that is belongs to "Recived"
@@ -51,14 +38,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<IEnumerable<LoanMaster>> AllLoanApplication()
         {
-            try
-            {
-                return await _eLoanDbContext.loanMasters.OrderByDescending(x => x.LoanName).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Reject loan application after physical review with remark, before start the loan approval process make again as "Accept".
@@ -68,21 +49,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<LoanMaster> RejectLoanApplication(int loanId, string remark)
         {
-            try
-            {
-                var findLoan = await _eLoanDbContext.loanMasters.FirstOrDefaultAsync(m => m.LoanId == loanId);
-                if (findLoan.LStatus == LoanStatus.Received)
-                {
-                    findLoan.LStatus = LoanStatus.Rejected;
-                    findLoan.ManagerRemark = remark;
-                    await _eLoanDbContext.SaveChangesAsync();
-                }
-                return findLoan;
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Start the loan Sanction if loan status is "Accept" and add the all pending amout and all terms,
@@ -92,26 +60,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<LoanApprovaltrans> SanctionedLoan(int loanId, LoanApprovaltrans loanApprovaltrans)
         {
-            if (loanApprovaltrans == null)
-            {
-                throw new ArgumentNullException(typeof(LoanApprovaltrans).Name + "Object is Null");
-            }
-            try
-            {
-                await _eLoanDbContext.loanApprovaltrans.AddAsync(loanApprovaltrans);
-                await _eLoanDbContext.SaveChangesAsync();
-                var findLoan = await _eLoanDbContext.loanMasters.FirstOrDefaultAsync(m => m.LoanId == loanId);
-                if (findLoan.LStatus == LoanStatus.Accept)
-                {
-                    findLoan.LStatus = LoanStatus.Done;
-                    await _eLoanDbContext.SaveChangesAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-            return loanApprovaltrans;
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Using this method check the loan status is "Accepted" or not before start loan process.
@@ -120,19 +70,8 @@ namespace E_Loan.BusinessLayer.Services.Repository
         /// <returns></returns>
         public async Task<LoanMaster> CheckLoanStatus(int loanId)
         {
-            try
-            {
-                var findLoan = await _eLoanDbContext.loanMasters.FirstOrDefaultAsync(m => m.LoanId == loanId);
-                if (findLoan.LStatus == LoanStatus.Accept)
-                {
-                    return findLoan;
-                }
-                return findLoan;
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
+            //do code here
+            throw new NotImplementedException();
         }
     }
 }
